@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Update
+{% endblock %}
+
+{% block main %}
+<div action="/update_owner" method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="text-start">Restaurant Name</th>
+                <th class="text-start">First Name</th>
+                <th class="text-start">Last Name</th>
+                <th class="text-start">Username</th>
+                <th class="text-start">Email</th>
+                <th class="text-start">Street</th>
+                <th class="text-start">City</th>
+                <th class="text-start">State</th>
+                <th class="text-start">Zip Code</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for variable in profile %}
+                <tr>
+                    <td class="text-start"><input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="restname" name="restname" placeholder="{{ variable.restname }}" type="text"></td>
+                    <td class="text-start"><input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="firstname" name="firstname" placeholder="{{ variable.firstname }}" type="text"></td>
+                    <td class="text-start"><input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="lastname" name="lastname" placeholder="{{ variable.lastname }}" type="text"></td>
+                    <td class="text-start"><input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="username" name="username" placeholder="{{ variable.username }}" type="text"></td>
+                    <td class="text-start"><input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="email" name="email" placeholder="{{ variable.email }}" type="text"></td>
+                    <td class="text-start"><input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="street" name="street" placeholder="{{ variable.street }}" type="text"></td>
+                    <td class="text-start"><input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="city" name="city" placeholder="{{ variable.city }}" type="text"></td>
+                    <td class="text-start"><input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="state" name="state" placeholder="{{ variable.state }}" type="text"></td>
+                    <td class="text-start"><input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="zip" name="zip" placeholder="{{ variable.zip }}" type="text"></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button class="btn btn-primary" type="submit">Update</button>
+</div>
+{% endblock %}

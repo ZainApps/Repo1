@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Update
+{% endblock %}
+
+{% block main %}
+<form action="/update_driver" method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="text-start">First Name</th>
+                <th class="text-start">Last Name</th>
+                <th class="text-start">Username</th>
+                <th class="text-start">Email</th>
+                <th class="text-start">City</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for variable in profile %}
+                <tr>
+                    <td class="text-start"><input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="firstname" name="firstname" placeholder="{{ variable.firstname }}" type="text"></td>
+                    <td class="text-start"><input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="lastname" name="lastname" placeholder="{{ variable.lastname }}" type="text"></td>
+                    <td class="text-start"><input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="username" name="username" placeholder="{{ variable.username }}" type="text"></td>
+                    <td class="text-start"><input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="email" name="email" placeholder="{{ variable.email }}" type="text"></td>
+                    <td class="text-start"><input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="city" name="city" placeholder="{{ variable.city }}" type="text"></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button class="btn btn-primary" type="submit">Update</button>
+</form>
+{% endblock %}

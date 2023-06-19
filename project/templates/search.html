@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block main %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="text-start">Name</th>
+                <!-- IF USER IS A DRIVER, VARIABLE NAME SHOULD SHOW AS CITY -->
+                <!-- IF USER IS AN OWNER, VARIABLE NAME SHOULD SHOW AS ADDRESS -->
+                <th class="text-start">{{ addtype }}</th>
+                <th class="text-start">Email</th>
+                <th class="text-start">Add User</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for variable in search %}
+                <tr action="/search" method="post">
+                    <!-- IF USER IS A DRIVER, NAME SHOULD BE FIRST + LAST NAME -->
+                    <!-- IF USER IS AN OWNER, NAME SHOULD BE RESTNAME -->
+                    <td class="text-start">{{ variable.name }}</td>
+                    <!-- IF USER IS A DRIVER, THIS ADDRESS VARIABLE SHOULD SHOW THE CITY THEY DRIVE IN -->
+                    <!-- IF USER IS AN OWNER, ADDRESS SHOULD SHOW FULL ADDRESS -->
+                    <td class="text-start">{{ variable.address }}</td>
+                    <td class="text-start">{{ variable.email }}</td>
+                    <button class="btn btn-primary" type="submit">Add user</button>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

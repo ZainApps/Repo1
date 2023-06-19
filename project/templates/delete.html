@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Delete Account
+{% endblock %}
+
+{% block main %}
+<div>
+    <h5>
+        Are you sure you want to delete your account?
+    </h5>
+</div>
+<div>
+    <h6>
+        If not please navigate to a different page
+    </h6>
+</div>
+<div action="/delete" method="post">
+    <button class="btn btn-primary" type="submit">Yes</button>
+</div>
+{% endblock %}

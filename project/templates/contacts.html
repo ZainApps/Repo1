@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Contacts
+{% endblock %}
+
+{% block main %}
+<form action="/" method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <!-- HIDDEN HEADER SO I CAN FREELY PULL IN USER ID FOR MY CONTACT DELETION FUNCTION WITHOUT SHOWING THE USERS THE ID VALUE -->
+                <th> <input type="hidden"></th>
+                <!-- IF USER IS A DRIVER, VARIABLE NAME SHOULD SHOW AS CITY -->
+                <!-- IF USER IS AN OWNER, VARIABLE NAME SHOULD SHOW AS ADDRESS -->
+                <th class="text-start">Name</th>
+                <th class="text-start">{{ addtype }}</th>
+                <th class="text-start">Email</th>
+                <th class="text-start">Remove User</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contact in contacts %}
+                <tr>
+                    <!-- HIDDEN VALUE SO I CAN FREELY PULL IN USER ID FOR MY CONTACT DELETION FUNCTION WITHOUT SHOWING THE USERS THE ID VALUE -->
+                    <td><input type="hidden" name="user_id" value="{{ contact.user_id }}"></td>
+                    <!-- IF USER IS A DRIVER, NAME SHOULD BE FIRST + LAST NAME -->
+                    <!-- IF USER IS AN OWNER, NAME SHOULD BE RESTNAME -->
+                    <td class="text-start">{{ contact.name }}</td>
+                    <!-- IF USER IS A DRIVER, THIS ADDRESS VARIABLE SHOULD SHOW THE CITY THEY DRIVE IN -->
+                    <!-- IF USER IS AN OWNER, ADDRESS SHOULD SHOW FULL ADDRESS -->
+                    <td class="text-start">{{ contact.address }}</td>
+                    <td class="text-start">{{ contact.email }}</td>
+                    <td>    <form action="/" method="post">
+                        <button class="btn btn-primary" type="submit">Remove</button>
+                    </form></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</form>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block main %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="text-start">First Name</th>
+                <th class="text-start">Last Name</th>
+                <th class="text-start">Username</th>
+                <th class="text-start">Email</th>
+                <th class="text-start">User Type</th>
+                <th class="text-start">City</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for variable in profile %}
+                <tr>
+                    <td class="text-start">{{ variable.firstname }}</td>
+                    <td class="text-start">{{ variable.lastname }}</td>
+                    <td class="text-start">{{ variable.username }}</td>
+                    <td class="text-start">{{ variable.email }}</td>
+                    <td class="text-start">{{ variable.type }}</td>
+                    <td class="text-start">{{ variable.city }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div action="/profile" method="post">
+        <button class="btn btn-primary" type="submit"><a class="link-light" href="/update_driver">Update my Profile</a></button>
+    </div>
+{% endblock %}
