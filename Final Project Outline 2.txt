@@ -1,0 +1,111 @@
+Done:
+
+1/21/23
+- Created empty Static Directory for future stylesheets
+- Created empty Templates Directory for future website templates
+- Coded basics of app.py
+- Wrote login function in app.py
+- Wrote logout function in app.py
+- Make sqlite database
+- Made a table in the database for users with id (INT, primary key), username (text) and hash (text)
+
+1/22/23
+- Finished Project Outline and planning
+
+1/23/23
+- Decided on Project name (DeliveRight)
+- Changed name of sqlite database based on project name
+- Changed the placeholder.db in app.py to the proper name
+
+1/25/23
+- Created layout.html as the basic template for all the future html templates I'll be using
+- Created login.html
+
+1/28/23
+- Wrote register function in app.py
+- Wrote profile function in app.py
+
+1/29/23
+- Created register.html
+	Same as finance, except have a dropdown for delivery drivers or owners as user type, as well as city operating in for driver and address for owners.
+	Maybe have register link to seperate site(s) based on user type
+
+1/30/23
+- Created profile.html as a page that displays all users info
+- Updated profile function, register.html, register function and database
+
+1/31/23
+- Updated register function and layout template
+
+2/1/23
+- Created Search page where owners can seek out potential drivers and vice versa based on user type for "contractual style" work aka that's their first priority
+- Finished first half of search function
+
+2/5/23
+- Wrote function for creating a new table per user at registration called contact list that adds users name, address and contact info.
+- Completed search function by creating a new table per user at registration called contact list that adds users name, address and contact info from search.html to that list
+
+2/8/23
+- Added Delete Account page that takes user to page that says are you sure?
+- Wrote Delete function which delete user's contact list, deletes user's profile from users table and then auto-logs them out when button on page is pressed.
+- Added Index page
+- Wrote Index Function which has remove option to remove users that they no longer want on their index feed.
+
+2/15/23
+- Added update function on profile page
+- Changed existing profile page to profile2.html and have it render user is driver and created a profile1 page for if user is owner
+- Updated profile function to direct the user to their appropriate profile page based on user type
+
+2/19/23
+- Made both update pages based on both profile pages
+- Finished writing the update paths.
+- Fixed search function to search based on user's city and list all possible people in the area
+
+FINAL Touches:
+- Change apology meme thing (in apology.html)
+- Create a stylesheet to plug into layout.html
+
+FOR 3/9/23:
+FIGURE OUT WHY SHIT DOESNT WORK WHEN BLANK (contacts, search, profile) (everything else works)
+Profile isn't blank and doesn't work due to if else statements regarding user type. Without these profile does work
+Search/Contacts still doesn't work when populated. No idea why. Maybe due to user type idk
+Decorators may be the answer to user type issue.
+MAYBE SPLIT INTO 2 PATHS WHERE EACH PATH POINTS TO THE OTHER AS THE REDIRECT BASED ON USER TYPE????
+	DOES NOT WORK
+MAIN ISSUE IS THE USER TYPE VARIABLE IS NOT POPULATING INTO A VARIABLE WHEN CALLED
+	SOLUTION IS LINE 123!!!!!. WHEN CALLING A SQL QUERY FOR ONE VARIABLE, HAVE TO SPECIFY ITEM [0] SO IT ONLY SJOWS "FIRST" VARIABLE PULLED FROM A SEARCH/QUERY
+
+3/15/23:
+- Fixed Profile
+	MAIN ISSUE IS THE USER TYPE VARIABLE IS NOT POPULATING INTO A VARIABLE WHEN CALLED
+	SOLUTION IS LINE 123!!!!!. WHEN CALLING A SQL QUERY FOR ONE VARIABLE, HAVE TO SPECIFY ITEM [0] SO IT ONLY SJOWS "FIRST" VARIABLE PULLED FROM A SEARCH/QUERY
+- Fixed Contacts and Search
+	Remember that variable.x only needs to be called in loop
+
+4/5/23
+- Fixed Profile page to direct to update pages for both user types
+	Buttons wouldn't work so used hyperlink instead, as no data manipulation in DB is required with said action
+
+FOR 4/6/23:
+FIGURE OUT WHY UPDATE PAGE'S BUTTON ISN'T LEADING TO PROFILE PAGES OR UPDATING DATA
+	Cant pass in positional and named parameters
+FIGURE OUT WHY CONTACTS PAGE'S BUTTON ISN'T UPDATING PAGE
+	Notes in app.py
+FIGURE OUT WHY SEARCH ISN'T POPULATING, DESPITE THE FACT THAT DB.EXECUTE QUERIES ARE WORKING
+
+4/26/23:
+- Fixed CONTACTS Page update function
+
+FOR 6/15/23:
+FIGURE OUT WHY UPDATE PAGE'S BUTTON ISN'T LEADING TO PROFILE PAGES OR UPDATING DATA
+	Cant pass in positional and named parameters
+
+FIGURE OUT WHY SEARCH ISN'T POPULATING, DESPITE THE FACT THAT DB.EXECUTE QUERIES ARE WORKING
+
+OPTIONAL:
+- Figure out how to hide additional fields for driver in register.html
+- Maybe add phone numbers as well to all this? Or maybe only have that info and email show up on index page for others to view, not on search
+
+Query for making contact lists:
+
+CREATE TABLE contactlist (user_id INTEGER NOT NULL, user_type TEXT NOT NULL, name TEXT NOT NULL, email TEXT NOT NULL, address TEXT NOT NULL, FOREIGN KEY(user_id) REFERENCES users(id))
